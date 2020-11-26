@@ -12,6 +12,7 @@ import java.util.Random;
 public class MainActivity extends AppCompatActivity {
 
     @Override
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -33,13 +34,18 @@ public class MainActivity extends AppCompatActivity {
         this.opcaoSelecionada("tesoura");
     }
 
+
+
+
     public void opcaoSelecionada(String opcaoSelecionada){
 
         ImageView imagemResultado = findViewById(R.id.imagemResultado);
         TextView textoResultado = findViewById(R.id.textResultado);
+        int placarApp=0;
+       /int placarUsuario=0;
         int app = new Random().nextInt(3);
-        String [] opcoes = {"pedra","papel","tesoura"};
-        String opcaoApp = opcoes [app];
+        String[] opcoes = {"pedra","papel","tesoura"};
+        String opcaoApp = opcoes[app];
 
         switch (opcaoApp){
             case "pedra" :
@@ -55,44 +61,31 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
 
-        if (
-                (opcaoApp == "pedra" && opcaoSelecionada == "tesoura") ||
-                (opcaoApp == "papel" && opcaoSelecionada == "pedra") ||
-                (opcaoApp == "tesoura" && opcaoSelecionada == "papel")
-        ){
-            textoResultado.setText("Você Perdeu");
-        }else if(
-                (opcaoSelecionada == "pedra" && opcaoApp == "tesoura") ||
-                (opcaoSelecionada == "papel" && opcaoApp == "pedra") ||
-                (opcaoSelecionada == "tesoura" && opcaoApp == "papel")
-        ){
-            textoResultado.setText("Você Ganhou");
+        //while (placarUsuario < 3) {
+                if (
+                            (opcaoApp == "pedra" && opcaoSelecionada == "tesoura") ||
+                            (opcaoApp == "papel" && opcaoSelecionada == "pedra") ||
+                            (opcaoApp == "tesoura" && opcaoSelecionada == "papel")
+                ) {
+                    textoResultado.setText("Você Perdeu");
+                    placarApp++;
+                } else if (
+                            (opcaoSelecionada == "pedra" && opcaoApp == "tesoura") ||
+                            (opcaoSelecionada == "papel" && opcaoApp == "pedra") ||
+                            (opcaoSelecionada == "tesoura" && opcaoApp == "papel")
+                ) {
+                    textoResultado.setText("Você Ganhou");
+                    placarUsuario++;
+                } else {
+                    textoResultado.setText("Deu Empate");
 
-        }else{
-            textoResultado.setText("Deu Empate");
+                }
+            System.out.println("Quero Resultado O1 "+opcaoApp);
+            System.out.println("Quero Resultado O2 "+opcaoSelecionada);
+            System.out.println("Quero Resultado P1 "+placarApp);
+            System.out.println("Quero Resultado P2 "+placarUsuario);
+          //  }
 
-        }
-
-        System.out.println("Quero Resultado "+opcaoApp);
-        System.out.println("Quero Resultado "+opcaoSelecionada);
-        System.out.println("Quero Resultado "+textoResultado);
-/*
-        if (opcaoSelecionada == opcaoApp) {
-            texto.setText("Deu EMPATE");
-        } else if (opcaoSelecionada == "pedra" && opcaoApp == "tesoura") {
-            texto.setText("Você GANHOU");
-        } else if (opcaoSelecionada == "papel" && opcaoApp == "pedra") {
-            texto.setText("Você GANHOU");
-        } else if (opcaoSelecionada == "tesoura" && opcaoApp == "papel") {
-            texto.setText("Você GANHOU");
-        } else if (opcaoSelecionada == "pedra" && opcaoApp == "papel") {
-            texto.setText("Você PERDEU");
-        } else if (opcaoSelecionada == "papel" && opcaoApp == "tesoura") {
-            texto.setText("Você PERDEU");
-        } else {
-            texto.setText("Você PERDEU");
-        }
-*/
 
 
 
