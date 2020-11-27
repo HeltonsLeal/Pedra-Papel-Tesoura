@@ -2,6 +2,7 @@ package com.silver7.pedrapapeloutesoura;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -38,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
     int placarUsuario = 0;
     int placarEmpate = 0;
 
+    @SuppressLint("SetTextI18n")
     public void opcaoSelecionada(String opcaoSelecionada) {
 
         ImageView imagemResultado = findViewById(R.id.imagemResultado);
@@ -62,16 +64,16 @@ public class MainActivity extends AppCompatActivity {
 
 
         if (
-                (opcaoApp == "pedra" && opcaoSelecionada == "tesoura") ||
-                (opcaoApp == "papel" && opcaoSelecionada == "pedra") ||
-                (opcaoApp == "tesoura" && opcaoSelecionada == "papel")
+                (opcaoApp.equals("pedra") && opcaoSelecionada.equals("tesoura")) ||
+                (opcaoApp.equals("papel") && opcaoSelecionada.equals("pedra")) ||
+                (opcaoApp.equals("tesoura") && opcaoSelecionada.equals("papel"))
         ) {
                 textoResultado.setText("Você Perdeu");
                 placarApp++;
         } else if (
-                (opcaoSelecionada == "pedra" && opcaoApp == "tesoura") ||
-                (opcaoSelecionada == "papel" && opcaoApp == "pedra") ||
-                (opcaoSelecionada == "tesoura" && opcaoApp == "papel")
+                (opcaoSelecionada.equals("pedra") && opcaoApp.equals("tesoura")) ||
+                (opcaoSelecionada.equals("papel") && opcaoApp.equals("pedra")) ||
+                (opcaoSelecionada.equals("tesoura") && opcaoApp.equals("papel"))
         ) {
                 textoResultado.setText("Você Ganhou");
                 placarUsuario++;
@@ -87,24 +89,7 @@ public class MainActivity extends AppCompatActivity {
         TextView pontosEmpate = findViewById(R.id.pontosEmpate);
         pontosEmpate.setText(String.valueOf(placarEmpate));
 
-        System.out.println("Quero Resultado O1 " + opcaoApp);
-        System.out.println("Quero Resultado O2 " + opcaoSelecionada);
-        System.out.println("Quero Resultado P1 " + placarApp);
-        System.out.println("Quero Resultado P2 " + placarUsuario);
     }
 
-    public int getPlacarApp() {
-        return placarApp;
-
-    }
-
-    public int getPlacarUsuario() {
-        return placarUsuario;
-
-    }
-
-    public int getPlacarEmpate() {
-        return placarEmpate;
-    }
 
 }
